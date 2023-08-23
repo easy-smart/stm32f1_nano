@@ -208,11 +208,7 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [
-      "lib_symbol_issues|1644650|793750|e854d20c-68e6-4b75-a164-9ddc8cddddfa|00000000-0000-0000-0000-000000000000|||",
-      "pin_to_pin|2025650|685800|e03299e0-c4d3-4eed-8899-35f31dc6e8e4|ac4c96b6-44ee-4a48-baae-8422dca1ba1a|/0d35483a-0b12-46cc-b9f2-896fd6831779|/0d35483a-0b12-46cc-b9f2-896fd6831779|/0d35483a-0b12-46cc-b9f2-896fd6831779",
-      "pin_to_pin|2025650|711200|d95f479c-1f67-4d4d-b311-3aba79426989|ac4c96b6-44ee-4a48-baae-8422dca1ba1a|/0d35483a-0b12-46cc-b9f2-896fd6831779|/0d35483a-0b12-46cc-b9f2-896fd6831779|/0d35483a-0b12-46cc-b9f2-896fd6831779"
-    ],
+    "erc_exclusions": [],
     "meta": {
       "version": 0
     },
