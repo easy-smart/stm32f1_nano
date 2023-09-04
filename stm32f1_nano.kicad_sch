@@ -5,7 +5,9 @@
   (paper "A4")
 
   (title_block
-    (date "sam. 04 avril 2015")
+    (title "STM32F1 Nano")
+    (date "2023-08-23")
+    (company "easy-smart solution GmbH")
   )
 
   (lib_symbols
