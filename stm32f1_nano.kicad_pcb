@@ -6,7 +6,10 @@
 
   (paper "A4")
   (title_block
-    (date "sam. 04 avril 2015")
+    (title "STM32F1 Nano")
+    (date "2023-09-05")
+    (rev "1.1.x-dev")
+    (company "easy-smart solution GmbH")
   )
 
   (layers
@@ -3029,7 +3032,7 @@
   (gr_text "CLK" (at 140.132 92.38) (layer "B.SilkS") (tstamp 068bc41a-5f85-4167-8645-be15759f2c59)
     (effects (font (size 1 1) (thickness 0.15)) (justify left mirror))
   )
-  (gr_text "easy-smart.ch\nSTM32F1 Nano\nv1.0.1" (at 100.762 91.11 90) (layer "B.SilkS") (tstamp 07aaf1bb-795e-46af-b262-20e4e95af847)
+  (gr_text "easy-smart.ch\nSTM32F1 Nano\n${REVISION}" (at 100.762 91.11 90) (layer "B.SilkS") (tstamp 07aaf1bb-795e-46af-b262-20e4e95af847)
     (effects (font (size 0.8 0.6) (thickness 0.08)) (justify top mirror))
   )
   (gr_text "PB7" (at 119.05 84.887 90) (layer "B.SilkS") (tstamp 0d9dc827-153f-4d10-897f-f2d13b2f168c)
