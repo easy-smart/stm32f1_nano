@@ -58,7 +58,7 @@ void Debugger_log(Debugger* debugger, const char* format, ...) {
  */
 void SWO_PrintChar(char c, uint8_t chan) {
 
-#if(0)
+#if(1)
     //Use CMSIS_core_DebugFunctions. See core_cm3.h
   ITM_SendChar (c);
 

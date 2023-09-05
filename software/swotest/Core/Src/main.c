@@ -111,7 +111,7 @@ int main(void)
   {
       if(HAL_GetTick() - tick1 >= 1000) {
           tick1=HAL_GetTick();
-          Debugger_log(DBG, "counter=%ul\n", counter++);
+          Debugger_log(DBG, "counter=%lu\n", counter++);
       }
       if(HAL_GetTick() - tick2 >= 500) {
           tick2=HAL_GetTick();
