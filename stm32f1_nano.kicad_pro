@@ -519,7 +519,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "3D/stm32f1_nano.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
