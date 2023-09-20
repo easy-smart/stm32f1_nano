@@ -2,5 +2,6 @@
   (version 7)
   (lib (name "#Transformer")(type "KiCad")(uri "${KIPRJMOD}/KiCad-Lib/#Transformer.kicad_sym")(options "")(descr ""))
   (lib (name "#Connector")(type "KiCad")(uri "${KIPRJMOD}/KiCad-Lib/#Connector.kicad_sym")(options "")(descr ""))
+  (lib (name "#Connector_Debug")(type "KiCad")(uri "${KIPRJMOD}/KiCad-Lib/#Connector_Debug.kicad_sym")(options "")(descr ""))
   (lib (name "#IC")(type "KiCad")(uri "${KIPRJMOD}/KiCad-Lib/#IC.kicad_sym")(options "")(descr ""))
 )
