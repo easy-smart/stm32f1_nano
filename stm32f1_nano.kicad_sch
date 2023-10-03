@@ -7,7 +7,7 @@
   (title_block
     (title "STM32F1 Nano")
     (date "2023-09-05")
-    (rev "1.1.x-dev")
+    (rev "1.1.0")
     (company "easy-smart solution GmbH")
   )
 
@@ -4173,7 +4173,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x05") (at 137.16 118.11 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3a6cc1d3-3280-4158-ab21-4d7b3d558ace)
     (property "Reference" "J5" (at 140.335 118.11 0)
       (effects (font (size 1.27 1.27)) (justify left))

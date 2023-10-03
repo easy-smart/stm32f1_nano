@@ -8,7 +8,7 @@
   (title_block
     (title "STM32F1 Nano")
     (date "2023-09-05")
-    (rev "1.1.x-dev")
+    (rev "1.1.0")
     (company "easy-smart solution GmbH")
   )
 
@@ -1394,11 +1394,12 @@
     (property "Partnumber" "")
     (property "Sheetfile" "stm32f1_nano.kicad_sch")
     (property "Sheetname" "")
+    (property "exclude_from_bom" "")
     (property "isBasicPart" "")
     (property "ki_description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)")
     (property "ki_keywords" "connector")
     (path "/3a6cc1d3-3280-4158-ab21-4d7b3d558ace")
-    (attr through_hole)
+    (attr through_hole exclude_from_bom)
     (fp_text reference "J5" (at 0 -2.33) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 7257d421-88a7-4f19-a14a-59ff92db4c12)
