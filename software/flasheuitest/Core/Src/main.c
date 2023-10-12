@@ -46,6 +46,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+// 25AA040A instructions
+const uint8_t EEPROM_READ = 0b00000011;
+const uint8_t EEPROM_WRITE = 0b00000010;
+const uint8_t EEPROM_WRDI = 0b00000100;
+const uint8_t EEPROM_WREN = 0b00000110;
+const uint8_t EEPROM_RDSR = 0b00000101;
+const uint8_t EEPROM_WRSR = 0b00000001;
+const uint8_t EEPROM_SFDP = 0x5a;
 
 /* USER CODE END PV */
 
@@ -57,6 +65,31 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+unsigned char SPI_SFDP_Read(uint32_t addr)
+{
+    unsigned char buf[1];
+
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&EEPROM_SFDP, 1, 100);
+
+
+    uint8_t tmp=0;
+    tmp=((addr & 0xFFFFFF) >> 16);
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&tmp, 1, 100);
+    tmp=(((addr & 0xFFFF) >> 8));
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&tmp, 1, 100);
+    tmp=(addr & 0xFF);
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&tmp, 1, 100);
+    tmp=0xFF;
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&tmp, 1, 100);
+
+//    addr=addr<<8;
+//    HAL_SPI_Transmit(&hspi1, (uint8_t *)&addr, 4, 100);
+
+    HAL_SPI_Receive(&hspi1, (uint8_t *)buf, sizeof(buf) / sizeof(buf[0]), 100);
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_SET);
+    return buf[0];
+}
 
 /* USER CODE END 0 */
 
@@ -110,7 +143,42 @@ int main(void)
 
     uint32_t tick1=0;
 
-  while (1)
+
+
+    char spi_buf[20];
+
+    // CS PIN
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_SET);
+
+    // Enable write enable latch (allow write operations)
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&EEPROM_WREN, 1, 100);
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_SET);
+
+    // Read status register
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_RESET);
+    HAL_SPI_Transmit(&hspi1, (uint8_t *)&EEPROM_RDSR, 1, 100);
+    HAL_SPI_Receive(&hspi1, (uint8_t *)spi_buf, 1, 100);
+    HAL_GPIO_WritePin(F_CS_GPIO_Port, F_CS_Pin, GPIO_PIN_SET);
+
+    // Print out status register
+    Debugger_log(DBG, "Status: 0x%x\n", (unsigned int)spi_buf[0]);
+
+    unsigned char EUI48_Octet5, EUI48_Octet4, EUI48_Octet3, EUI48_Octet2, EUI48_Octet1, EUI48_Octet0;
+    EUI48_Octet0=SPI_SFDP_Read(0x261);
+    EUI48_Octet1=SPI_SFDP_Read(0x262);
+    EUI48_Octet2=SPI_SFDP_Read(0x263);
+    EUI48_Octet3=SPI_SFDP_Read(0x264);
+    EUI48_Octet4=SPI_SFDP_Read(0x265);
+    EUI48_Octet5=SPI_SFDP_Read(0x266);
+
+    // Print out MAC address
+    Debugger_log(DBG, "MAC: %02x:%02x:%02x:%02x:%02x:%02x\n", (unsigned int)EUI48_Octet0, (unsigned int)EUI48_Octet1, (unsigned int)EUI48_Octet2, (unsigned int)EUI48_Octet3, (unsigned int)EUI48_Octet4, (unsigned int)EUI48_Octet5);
+
+
+
+
+    while (1)
   {
       if(tick1 - HAL_GetTick() > 10) {
           tick1 = HAL_GetTick();
